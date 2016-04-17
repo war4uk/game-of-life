@@ -1,7 +1,5 @@
 LifeApp.runIteration = (function (coordsHelper) {
-  return runIteration;
-
-  function runIteration(field) {
+  return function runIteration(field) {
     field.currentState = field.currentState.map(function (isCurrentCellAlive, index) {
       var coords = coordsHelper.getCoordsFromIndex(index, field.dimensions);
 

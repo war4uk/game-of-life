@@ -1,16 +1,14 @@
-(function (startGame) {
-  var gliderInitialState = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-  ].map(function (value) { return !!value; });
+(function (startGame, initialStates) {
 
-  startGame({ x: 10, y: 10 }, gliderInitialState);
-})(LifeApp.startGame);
+  var startButtons = document.getElementById('presets');
+
+  initialStates.forEach(function (stateInfo) {
+    var button = document.createElement("button");
+    button.innerText = 'Start ' + stateInfo.name;
+    button.onclick = function () {
+      startGame(stateInfo.state.dimensions, stateInfo.state.field);
+    }
+
+    startButtons.appendChild(button);
+  });
+})(LifeApp.startGame, LifeApp.initialStates);
