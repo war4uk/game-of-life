@@ -1,4 +1,9 @@
-describe("CoordsHelper", function () {
+describe("Run iteration", function () {
+  var iterationRunner;
+
+  beforeAll(function () {
+    iterationRunner = LifeApp.getRunIteration(LifeApp.CoordsHelper); // assume that CoordsHelper is reliable enough to not mock it
+  });
 
   it("correctly handles loaf patten iteration", function () {
     var loafState = [
@@ -15,7 +20,7 @@ describe("CoordsHelper", function () {
       iterationNumber: 0
     };
 
-    var testLoafFieldAfterIteration = LifeApp.runIteration(testLoafField);
+    var testLoafFieldAfterIteration = iterationRunner(testLoafField);
     // loaf is a stable form
     expect(testLoafFieldAfterIteration.currentState).toEqual(loafState);
   })
@@ -35,7 +40,7 @@ describe("CoordsHelper", function () {
       iterationNumber: 0
     };
 
-    var actualBlinkerFieldAfterIteration = LifeApp.runIteration(tesBlinkerField).currentState;
+    var actualBlinkerFieldAfterIteration = iterationRunner(tesBlinkerField).currentState;
 
     var expectedBlinkerFieldAfterIteration = [
       0, 0, 0, 0, 0,

@@ -26,3 +26,7 @@
    display: table;
    border-collapse: collapse;
  }
+ 
+ .preset-button {
+   margin: 10px;
+ }

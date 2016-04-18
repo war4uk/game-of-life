@@ -1,5 +1,11 @@
 describe("CoordsHelper", function () {
 
+  var coordsHelper;
+
+  beforeAll(function () {
+    coordsHelper = LifeApp.CoordsHelper;
+  });
+
   it("return correct neighbour coords", function () {
     var testField = {
       dimensions: { x: 5, y: 4 },
@@ -12,7 +18,7 @@ describe("CoordsHelper", function () {
       iterationNumber: 0
     };
 
-    var neightbourCoords = LifeApp.Coords.getNeighbourValues({ x: 0, y: 1 }, testField);
+    var neightbourCoords = coordsHelper.getNeighbourValues({ x: 0, y: 1 }, testField);
 
     expect(neightbourCoords.sort()).toEqual([
       10, 7,
@@ -37,7 +43,7 @@ describe("CoordsHelper", function () {
 
     var index = 17;
 
-    var coords = LifeApp.Coords.getCoordsFromIndex(17, testField.dimensions);
+    var coords = coordsHelper.getCoordsFromIndex(17, testField.dimensions);
     expect(coords).toEqual({ x: 5, y: 2 })
   });
 });
